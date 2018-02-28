@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2018 at 12:13 PM
+-- Generation Time: Feb 28, 2018 at 06:32 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -100,6 +100,33 @@ INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`,
 (4, 2, 'A simple React app', 'Amit', '2018-01-21', 'react.png', 'This is a simple React weather app.', 'React, javascript, weather, app', 4, 'publish'),
 (5, 3, 'Manbat', 'Amit', '2018-01-16', 'MANBAT.jpg', '    Funny pic.', 'batman, manbat', 2, 'publish');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(3) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_firstname` varchar(255) NOT NULL,
+  `user_lastname` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_image` text NOT NULL,
+  `user_role` varchar(255) NOT NULL,
+  `randSalt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`) VALUES
+(1, 'iamrico', '123', 'rico', 'singh', 'ricosingh@gmail.com', '', 'admin', ''),
+(2, 'amit1234', 'password', 'Amit', 'Kr', 'amit1234@gmail.com', '', 'subscriber', ''),
+(4, 'wqqwq', '', 'WOW', 'eererer', 'werwr@dfd.com', '', 'subscriber', '');
+
 --
 -- Indexes for dumped tables
 --
@@ -123,6 +150,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -136,13 +169,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
