@@ -21,6 +21,10 @@
         
         $create_post = mysqli_query($connection, $query);    //TODO: Sanitise the query ....
         confirm($create_post);
+        
+        $new_post_id = mysqli_insert_id($connection);        // This will give the ID of the currnet inserted row ....................  :) 
+        
+        echo "<p class='bg-success'>Post Craeted <a href='../post.php?p_id={$new_post_id}'>View Post</a></p>";
     }
 
 ?>
@@ -78,10 +82,13 @@
     
     
     <div class="form-group">
-    <label for="post_status">Post Status</label>
-    <input type="text" class="form-control" name="post_status">
+    <label for="post_status">Post Status</label> <br/>
+    <select name="post_status">
+        <option value="draft">Select Status</option>
+        <option value="draft">Draft</option>
+        <option value="publish">Publish</option>
+    </select>
     </div>
-    
     
     
     
@@ -103,7 +110,7 @@
     
     <div class="form-group">
     <label for="post_content">Post Content</label>
-    <textarea class="form-control" name="post_content" id="" cols="30" rows="10">
+    <textarea class="form-control" name="post_content" id="editor" cols="30" rows="10">
     </textarea>
     </div>
     

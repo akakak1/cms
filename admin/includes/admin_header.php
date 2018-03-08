@@ -1,8 +1,24 @@
 <?php  include "../includes/db.php"; ?>
 <?php  include "functions.php"; ?>
-
-
 <?php ob_start(); ?>     <!-- USE NOT CLEAR -->
+<?php session_start(); ?>
+
+
+
+
+<?php
+
+    if(!isset($_SESSION['user_role'])) {
+            header("Location: ../index.php");
+    } else {                                                   // He said that this part will be implemented in the extra feature 
+        if(isset($_SESSION['user_role'])) {                    // but I have implemented this .......and I might change this if there is any modifiction.
+            if($_SESSION['user_role'] !== 'admin') {
+                header("Location: ../index.php");
+            }
+        }
+    }
+?>
+
 
 
 
@@ -34,6 +50,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>       <!-- For google charts -->
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>   <!-- CK EDITOR -->
+    
+    
 
 </head>
 

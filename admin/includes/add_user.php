@@ -12,7 +12,7 @@
         
         $username = $_POST['username'];
         $user_email = $_POST['user_email'];
-        $user_password = $_POST['user_password'];
+        $user_password = $_POST['user_password'];   // TODO ::::::  to encrypt.............
         
 //        $post_date = date('d-m-y'); //Current
         
@@ -24,6 +24,8 @@
         
         $create_user = mysqli_query($connection, $query);    //TODO: Sanitise the query ....
         confirm($create_user);
+        
+        echo "User created". " " . "<a href='users.php'>View Users</a>" ;
     }
 
 ?>

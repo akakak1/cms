@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2018 at 06:32 PM
+-- Generation Time: Mar 08, 2018 at 09:20 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -70,7 +70,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`comment_id`, `comment_post_id`, `comment_author`, `comment_email`, `comment_content`, `comment_status`, `comment_date`) VALUES
 (1, 5, 'Amit', 'amit@amit.com', 'This is one cool superhero', 'Approved', '2018-01-20'),
 (3, 1, 'Amit', 'amit@amit.com', 'Its a good cms !', 'Approved', '2018-01-21'),
-(8, 5, 'SS', 'SS@SS.SSS', 'SSSSSSSS', 'Approved', '2018-01-21');
+(8, 5, 'SS', 'SS@SS.SSS', 'SSSSSSSS', 'Unapproved', '2018-01-21'),
+(9, 9, 'cc', 'ccc@ccc.ccc', 'ccc', 'Unapproved', '2018-03-08');
 
 -- --------------------------------------------------------
 
@@ -97,8 +98,10 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES
 (1, 1, 'A simple CMS', 'Amit', '2018-01-21', 'php.jpg', 'This is a CMS created with PHP by Amit.', 'cms, php, javascript', 4, 'publish'),
-(4, 2, 'A simple React app', 'Amit', '2018-01-21', 'react.png', 'This is a simple React weather app.', 'React, javascript, weather, app', 4, 'publish'),
-(5, 3, 'Manbat', 'Amit', '2018-01-16', 'MANBAT.jpg', '    Funny pic.', 'batman, manbat', 2, 'publish');
+(4, 2, 'A simple React app', 'Amit', '2018-03-08', 'react.png', '<p>This is a simple React weather app.</p>', 'React, javascript, weather, app', 4, 'publish'),
+(5, 3, 'Manbat', 'Amit', '2018-03-08', 'MANBAT.jpg', '<p>Funny pic.</p>', 'batman, manbat', 4, 'publish'),
+(6, 1, 'Nice one, Good', 'AK', '2018-03-08', 'Screenshot (120).png', '<p>Ya its fine</p>', 'Nice one ', 4, 'publish'),
+(9, 1, 'vvv', 'vvv', '2018-03-08', 'Screenshot (9).png', '<p>vvv</p>', 'vvv', 1, 'publish');
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,7 @@ CREATE TABLE `users` (
   `user_email` varchar(255) NOT NULL,
   `user_image` text NOT NULL,
   `user_role` varchar(255) NOT NULL,
-  `randSalt` varchar(255) NOT NULL
+  `randSalt` varchar(255) NOT NULL DEFAULT '$2y$10$iusesomecrazystrings22'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -123,9 +126,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`) VALUES
-(1, 'iamrico', '123', 'rico', 'singh', 'ricosingh@gmail.com', '', 'admin', ''),
-(2, 'amit1234', 'password', 'Amit', 'Kr', 'amit1234@gmail.com', '', 'subscriber', ''),
-(4, 'wqqwq', '', 'WOW', 'eererer', 'werwr@dfd.com', '', 'subscriber', '');
+(1, 'iamrico', '$1$zXYWGLlY$tBTqlkb0QmRNPPm48l9yP.', 'rico', 'singh', 'ricosingh@gmail.com', '', 'admin', ''),
+(2, 'amit1234', '$1$W.RXjxjN$wdpVA1KLWybIAnNwYGRRi0', 'Amit', 'Kr', 'amit1234@gmail.com', '', 'subscriber', ''),
+(13, 'www', '$1$wKWlQRPt$Ti5FIinM7VrUPRuq385BF1', 'www', 'www', 'www@www.www', '', 'admin', '$2y$10$iusesomecrazystring22');
 
 --
 -- Indexes for dumped tables
@@ -169,19 +172,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `comment_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
