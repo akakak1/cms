@@ -26,29 +26,8 @@
                 
                 <!-- TO DISPLAY ALL POSTS -->
                 <?php 
-    
-    
-                    // This is used by the pager.
-                    $query = "SELECT * FROM posts";
-                    $query_result = mysqli_query($connection, $query);
-                    $posts_count = mysqli_num_rows($query_result);
-                    $posts_count = ceil($posts_count / 5);
 
-
-                    if(isset($_GET['page'])) {
-                        $page = $_GET['page'];
-                    } else {
-                        $page = 1;
-                    }
-
-                    if($page == 1) {
-                        $starting_post = 0;
-                    } else {
-                        $starting_post = ($page - 1) * 5;
-                    }
-
-
-                    $query = "SELECT * FROM posts WHERE post_status='publish' ORDER BY post_id DESC LIMIT {$starting_post},5";  // LIMIT must be at the end.
+                    $query = "SELECT * FROM posts WHERE post_status='publish' ORDER BY post_id DESC";
                     $all_posts = mysqli_query($connection,$query);
 
                     //TODO :::
@@ -68,7 +47,6 @@
                         
                         if($post_status == 'publish') {
                 ?>
-                           
                             <h2>
                                 <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title ?></a>
                             </h2>
@@ -98,24 +76,11 @@
 
             <!-- Blog Sidebar Widgets Column -->
             <?php  include "includes/sidebar.php" ?>   <!-- NOTE: this sidebar is shared by index,post and category -->       
-
+            
 
         </div>
         <!-- /.row -->
 
         <hr>
-        
-        <ul class="pager">
-            <?php 
-                for($i =1; $i <= $posts_count; $i++) {
-                    
-                    if($i == $page) {
-                        echo "<li><a class='active_page' href='index.php?page={$i}'>{$i}</a></li>";
-                    } else {
-                        echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
-                    }
-                }
-            ?>
-        </ul>
 
 <?php  include "includes/footer.php" ?>

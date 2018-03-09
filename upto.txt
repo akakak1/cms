@@ -1,1 +1,11 @@
-204
+1-204
+
+211-215
+
+237-245 (Hosting to do )
+
+246-249  (done, its a mailer, to be tested) [error in localhost, try after hosting.] (Warning: mail(): Failed to connect to mailserver at "localhost" port 25, verify your "SMTP" and "smtp_port" setting in php.ini or use ini_set() in C:\xampp\htdocs\cms\contact.php on line 12)
+
+250-252  (modal, to do) (do after hosting) 
+
+258-259 (do after hosting)
